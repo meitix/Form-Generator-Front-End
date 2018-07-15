@@ -1,0 +1,27 @@
+<span class="dropdown">
+<button class="btn btn-danger btn-simple btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
+  {{option.text}} |
+      <b class="caret"></b>
+    </button>
+<ul class="dropdown-menu">
+    <!-- <li>
+      <a>
+        ویرایش
+        <i class="material-icons pull-left">mode_edit</i>
+      </a>
+    </li> -->
+		<li (click)="reduceOrder()">
+      <a>
+        یدونه بپر قبلی
+        <i class="material-icons pull-left">code</i>
+      </a>
+    </li>
+		<li (click)="deleteOption(option)">
+      <a>
+        حذف
+        <i class="material-icons pull-left">delete</i>
+      </a>
+    </li>
+	</ul>
+
+</span>

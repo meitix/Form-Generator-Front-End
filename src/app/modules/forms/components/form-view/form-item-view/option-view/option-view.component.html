@@ -1,0 +1,9 @@
+<ul class="nav nav-pills nav-pills-info" [formGroup]="form">
+    <li *ngFor="let option of options" [ngClass]="{'active': option.text === selectedValue}">
+      <label>
+        {{option.text}}
+        <input class="invisible" type="radio" [formControlName]="controleName" value="{{option.text}}" (change)="selectOption(a)" [checked]="option.text === selectedValue"/>
+      </label>
+      <a data-toggle="tab" #a class="invisible"></a>
+    </li>
+</ul>

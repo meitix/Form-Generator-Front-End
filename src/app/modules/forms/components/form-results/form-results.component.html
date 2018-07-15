@@ -1,0 +1,48 @@
+<div class="card" *ngIf="results;else loading">
+  <div class="card-header" data-background-color="blue">
+    <h4 class="title">لیست نتایج {{ form.title }}</h4>
+  </div>
+  <div class="card-content table-responsive">
+
+      <div class="toolbar">
+          <a [routerLink]="['..' , 'view']" class="btn btn-success">ثبت نتیجه جدید</a>
+          <div >
+            <button
+            class="btn btn-xs"
+            [ngClass]="{'btn-info': shownKies.indexOf(key) > -1}"
+            type="button"
+            *ngFor="let key of resultKeies"
+            (click)="toggleShow(key)"
+            >{{key | translate}}</button>
+          </div>
+        </div>
+<hr/>
+    <table class="table">
+      <thead class="text-danger">
+        <th *ngFor="let key of shownKies" >{{key | translate}}</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let result of results">
+          <td *ngFor="let key of shownKies">{{ key === 'date' ? (result[key] | faDate) : result[key]}}</td>
+          <td>
+            <button class="btn btn-warning btn-simple" type="button" (click)="edit(result)">
+            <i class="material-icons text-warning">edit</i>
+          </button>
+            <button class="btn btn-danger btn-simple" type="button" (click)="delete(result)">
+            <i class="material-icons">delete</i>
+          </button>
+        </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="loader">
+    <svg class="circular" viewBox="25 25 50 50">
+      <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+    </svg>
+  </div>
+</ng-template>

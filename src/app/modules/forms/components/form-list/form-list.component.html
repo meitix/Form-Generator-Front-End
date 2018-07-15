@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-12">
+
+<div class="card">
+	<div class="card-header" data-background-color="blue">
+		<h4 class="title">لیست فرم های ساخته شده</h4>
+		<p class="category">تمامی فرمهایی که توسط شما ساخنه شده در اینجا قابل مشاهده و مدیریت می باشد</p>
+	</div>
+	<div class="card-content table-responsive">
+		<table class="table">
+			<thead class="text-danger">
+				<th>عنوان</th>
+        <th>وضعیت</th>
+        <td></td>
+			</thead>
+			<tbody>
+				<tr *ngFor="let form of forms">
+					<td>{{form.title}}</td>
+          <td>
+            <span class="text-success" *ngIf="form.isEnable">فعال</span>
+            <span class="text-danger" *ngIf="!form.isEnable">غیرفعال</span>
+          </td>
+          <td>
+            <a class="btn btn-info btn-simple" routerLink="/forms/{{form._id}}/results">
+              <i class="material-icons">poll</i>
+            </a>
+
+            <a class="btn btn-info btn-simple" routerLink="/forms/{{form._id}}/users">
+              <i class="material-icons">people</i>
+            </a>
+
+            <button class="btn btn-warning btn-simple" type="button" (click)="edit(form)">
+            <i class="material-icons text-warning">edit</i>
+          </button>
+
+            <button class="btn btn-danger btn-simple" type="button" (click)="delete(form)">
+            <i class="material-icons">delete</i>
+          </button>
+
+          </td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+</div>
+</div>
+</div>

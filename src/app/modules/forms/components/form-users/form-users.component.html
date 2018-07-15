@@ -1,0 +1,39 @@
+<div class="card">
+    <form #f="ngForm" (submit)="submit()">
+  <div class="card-header" data-background-color="blue">
+    <h4>کاربران {{form?.title}}</h4>
+    <p>کاربران فرم {{ form?.title }} را میتوانید در این قسمت مدیریت کنید</p>
+  </div>
+  <div class="card-content">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 dropdown" [ngClass]="{'open': searchResults.length >0 }">
+            <div class="form-group label-floating">
+              <label class="control-label">ایمیل کاربر مورد نظر</label>
+              <input class="form-control" autocomplete="disabled" type="text" [(ngModel)]="searchUsername" name="searchUsername" (keyup)="doSearch()">
+
+              <ul class="dropdown-menu">
+                <li *ngFor="let result of searchResults" (click)="addUserToForm(result)">
+                  <a>{{result.username}}</a>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+        <hr/>
+        <div class="row">
+          <div class="col-sm-12 col-md-4 col-lg-5" *ngFor="let user of formUsers">
+              <app-form-user-item [item]="user" (userRemove)="removeUserFromFrom($event)"></app-form-user-item>
+          </div>
+        </div>
+      </div>
+
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-success">ثبت</button>
+  </div>
+    </form>
+</div>
+

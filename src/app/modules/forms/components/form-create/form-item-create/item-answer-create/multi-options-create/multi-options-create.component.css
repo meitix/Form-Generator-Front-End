@@ -1,0 +1,8 @@
+.remove-btn-holder{
+  padding-top:30px;
+}
+
+.col-md-3,.col-md-1{
+  float:none;
+  display:inline-block;
+}

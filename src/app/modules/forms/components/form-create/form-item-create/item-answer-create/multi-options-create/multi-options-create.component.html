@@ -1,0 +1,11 @@
+
+<div class="col-md-3">
+	<div class="form-group label-floating">
+		<label class="control-label">گزینه</label>
+		<input [(ngModel)]="optionText" type="text" class="form-control">
+  </div>
+</div>
+<div class="col-md-1 remove-btn-holder">
+  <button [disabled]="optionText.length == 0"
+   class="btn btn-success btn-xs" (click)="addOption()" type="button">ثبت</button>
+</div>
