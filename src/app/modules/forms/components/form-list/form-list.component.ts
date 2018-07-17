@@ -5,8 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-form-list',
-  templateUrl: './form-list.component.html',
-  styleUrls: ['./form-list.component.css']
+  templateUrl: './form-list.component.html'
 })
 export class FormListComponent implements OnInit {
   forms: TadForm[];

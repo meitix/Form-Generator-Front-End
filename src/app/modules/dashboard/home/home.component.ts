@@ -1,10 +1,10 @@
-import { Component, OnInit, trigger, state, style, transition, animate } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 declare var $: any;
 
 @Component({
     selector: 'app-home-cmp',
-    moduleId: module.id,
+    // moduleId: module.id,
     templateUrl: 'home.component.html'
 })
 

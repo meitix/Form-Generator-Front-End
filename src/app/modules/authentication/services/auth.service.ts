@@ -2,7 +2,6 @@ import { Injectable , EventEmitter} from '@angular/core';
 import { User } from '../../users/models/user';
 import { Http } from '@angular/http';
 import { HttpRequestResult } from '../../../models/http-request-result';
-import { Observable } from 'rxjs/Observable';
 import { ServerConfig } from '../../../app-config/server-config';
 
 @Injectable()

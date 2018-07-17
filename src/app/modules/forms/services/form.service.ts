@@ -4,7 +4,6 @@ import { QuestionType } from '../components/models/question-type';
 import { TadForm } from '../components/models/tad-form';
 import { Question } from '../components/models/question';
 import { Http, Response } from '@angular/http';
-// tslint:disable-next-line:import-blacklist
 import 'rxjs/Rx';
 import { FormResult } from '../components/models/form-result';
 import { HttpRequestResult } from '../../../models/http-request-result';

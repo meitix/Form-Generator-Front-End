@@ -3,7 +3,7 @@ import { ROUTES } from '../.././sidebar/sidebar-routes.config';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 @Component({
-    moduleId: module.id,
+    // moduleId: module.id,
     selector: 'navbar-cmp',
     templateUrl: 'navbar.component.html',
     styleUrls: ['navbar.component.css']

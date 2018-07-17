@@ -6,7 +6,8 @@
 
       <div class="toolbar">
           <a [routerLink]="['..' , 'view']" class="btn btn-success">ثبت نتیجه جدید</a>
-          <div >
+          <button (click)="getCSV()" class="btn btn-primary btn-simple">CSV</button>
+          <div>
             <button
             class="btn btn-xs"
             [ngClass]="{'btn-info': shownKies.indexOf(key) > -1}"

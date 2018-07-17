@@ -10,8 +10,7 @@ import { TadForm } from '../../../forms/components/models/tad-form';
 
 @Component({
   selector: 'app-user-create',
-  templateUrl: './user-create.component.html',
-  styleUrls: ['./user-create.component.css']
+  templateUrl: './user-create.component.html'
 })
 
 export class UserCreateComponent implements OnInit , OnDestroy {
@@ -67,7 +66,7 @@ export class UserCreateComponent implements OnInit , OnDestroy {
         res => {
           if (res.success) {
             alert('کاربر ' + this.user.username + ' با موفقیت ثبت شد');
-          }else {
+          } else {
             alert(res.message);
             console.log(res.error);
           }

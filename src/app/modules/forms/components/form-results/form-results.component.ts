@@ -1,4 +1,4 @@
-import { Component, OnInit, keyframes } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from '../../services/form.service';
@@ -8,8 +8,7 @@ import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'app-form-results',
-  templateUrl: './form-results.component.html',
-  styleUrls: ['./form-results.component.css']
+  templateUrl: './form-results.component.html'
 })
 export class FormResultsComponent implements OnInit, OnDestroy {
   idSubscription: Subscription;
@@ -17,6 +16,12 @@ export class FormResultsComponent implements OnInit, OnDestroy {
   results: any[];
   resultKeies: string[];
   shownKies: string[];
+
+  Results = [
+    ['Col1', 'Col2', 'Col3', 'Col4'],
+    ['Data', 50, 100, 500],
+    ['Data', -100, 20, 100],
+    ];
   constructor(
     private route: ActivatedRoute,
     private formService: FormService,
@@ -63,6 +68,25 @@ export class FormResultsComponent implements OnInit, OnDestroy {
       // );
     });
   }
+
+
+    getCSV() {
+      let CsvString = '';
+      this.Results.forEach(function(RowItem, RowIndex) {
+        RowItem.forEach(function(ColItem, ColIndex) {
+          CsvString += ColItem + ',';
+        });
+        CsvString += '\r\n';
+      });
+      CsvString = 'data:application/csv,' + encodeURIComponent(CsvString);
+      const x = document.createElement('A');
+      x.setAttribute('href', CsvString );
+      x.setAttribute('download', 'somedata.csv');
+      document.body.appendChild(x);
+      x.click();
+    }
+
+
 
   edit(result: any) {
     this.resultService.setCurrentResult(result);

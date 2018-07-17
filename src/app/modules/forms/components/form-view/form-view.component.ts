@@ -12,8 +12,7 @@ import { ResultService } from '../../services/result.service';
 
 @Component({
   selector: 'app-form-view',
-  templateUrl: './form-view.component.html',
-  styleUrls: ['./form-view.component.css']
+  templateUrl: './form-view.component.html'
 })
 
 export class FormViewComponent implements OnInit, OnDestroy {

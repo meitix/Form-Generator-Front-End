@@ -6,7 +6,7 @@ import { User } from '../modules/users/models/user';
 
 declare var $: any;
 @Component({
-  moduleId: module.id,
+//  moduleId: module.id,
   selector: 'app-sidebar-cmp',
   templateUrl: 'sidebar.component.html'
 })
