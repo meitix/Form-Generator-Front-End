@@ -27,6 +27,7 @@ import { FormUsersComponent } from './components/form-users/form-users.component
 import { FormUserItemComponent } from './components/form-users/form-user-item/form-user-item.component';
 import { DatePipe } from '../../pipes/date.pipe';
 import { TranslatePipe } from '../../pipes/translate.pipe';
+import { FormChartsComponent } from './components/form-charts/form-charts.component';
 
 @NgModule({
   imports: [
@@ -52,7 +53,8 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
     FormUsersComponent,
     FormUserItemComponent,
     DatePipe,
-    TranslatePipe
+    TranslatePipe,
+    FormChartsComponent
   ],
   providers: [
     FormService,

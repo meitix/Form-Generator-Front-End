@@ -5,10 +5,13 @@ import { FormService } from '../../services/form.service';
 import { TadForm } from '../models/tad-form';
 import { ResultService } from '../../services/result.service';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { DatePipe } from '../../../../pipes/date.pipe';
+import 'text-encoding';
 
 @Component({
   selector: 'app-form-results',
-  templateUrl: './form-results.component.html'
+  templateUrl: './form-results.component.html',
+  providers: [DatePipe]
 })
 export class FormResultsComponent implements OnInit, OnDestroy {
   idSubscription: Subscription;
@@ -17,17 +20,14 @@ export class FormResultsComponent implements OnInit, OnDestroy {
   resultKeies: string[];
   shownKies: string[];
 
-  Results = [
-    ['Col1', 'Col2', 'Col3', 'Col4'],
-    ['Data', 50, 100, 500],
-    ['Data', -100, 20, 100],
-    ];
+  Results = [];
   constructor(
     private route: ActivatedRoute,
     private formService: FormService,
     private router: Router,
-    private resultService: ResultService
-  ) {}
+    private resultService: ResultService,
+    private datePipe: DatePipe
+  ) { }
 
   ngOnInit() {
     this.idSubscription = this.route.params.subscribe(params => {
@@ -39,7 +39,7 @@ export class FormResultsComponent implements OnInit, OnDestroy {
           this.results = res;
 
           let resKies = [];
-          (function() {
+          (function () {
             const hasOwn = Object.prototype.hasOwnProperty;
             Object.keys = Object_keys;
             function Object_keys(obj) {
@@ -70,21 +70,36 @@ export class FormResultsComponent implements OnInit, OnDestroy {
   }
 
 
-    getCSV() {
-      let CsvString = '';
-      this.Results.forEach(function(RowItem, RowIndex) {
-        RowItem.forEach(function(ColItem, ColIndex) {
-          CsvString += ColItem + ',';
-        });
-        CsvString += '\r\n';
+  getCSV() {
+    this.Results = [];
+    this.Results.push(this.shownKies);
+    this.results.forEach(element => {
+      const row = [];
+      this.shownKies.forEach(el => {
+        if (el === 'date') {
+          row.push(this.datePipe.transform(element[el]));
+        } else {
+          row.push(element[el]);
+        }
       });
-      CsvString = 'data:application/csv,' + encodeURIComponent(CsvString);
-      const x = document.createElement('A');
-      x.setAttribute('href', CsvString );
-      x.setAttribute('download', 'somedata.csv');
-      document.body.appendChild(x);
-      x.click();
-    }
+      this.Results.push(row);
+    });
+
+    let CsvString = '';
+    this.Results.forEach(function (RowItem, RowIndex) {
+      RowItem.forEach(function (ColItem, ColIndex) {
+        CsvString += ColItem + ',';
+      });
+      CsvString += '\r\n';
+    });
+    const uint8array = new TextEncoder().encode(CsvString);
+    CsvString = 'data:application/csv,' + uint8array;
+    const x = document.createElement('A');
+    x.setAttribute('href', CsvString);
+    x.setAttribute('download', this.form.title.concat('.csv'));
+    document.body.appendChild(x);
+    x.click();
+  }
 
 
 
@@ -97,7 +112,7 @@ export class FormResultsComponent implements OnInit, OnDestroy {
     if (confirm('آیا مطمئنید ؟ \n\r تغییرات غیر قابل بازگشت است')) {
       this.resultService.delete(result, this.form._id).subscribe(res => {
         if (res.success) {
-          this.results = this.results.filter(function(item) {
+          this.results = this.results.filter(function (item) {
             return item._id !== result._id;
           });
         } else {
