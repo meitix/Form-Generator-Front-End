@@ -23,15 +23,15 @@
     "angular-in-memory-web-api": "0.3.1",
     "angular2-google-maps": "~0.17.0",
     "bootstrap": "^3.3.7",
-    "chartist": "~0.9.8",
+    "chartist": "^0.9.8",
     "core-js": "^2.4.1",
     "jquery": "~3.1.1",
-    "ng-chartist": "1.1.0",
     "ng2-drag-drop": "^3.0.2",
     "ng2-sweetalert2": "0.0.8",
     "reflect-metadata": "~0.1.8",
     "rxjs": "^6.2.1",
     "rxjs-compat": "^6.2.1",
+    "text-encoding": "^0.6.4",
     "zone.js": "^0.7.2"
   },
   "devDependencies": {

@@ -12,6 +12,7 @@ import { NavbarModule } from './shared/navbar/navbar.module';
 import { HttpModule } from '@angular/http';
 import { MenuService } from './sidebar/menu.service';
 import { AuthService } from './modules/authentication/services/auth.service';
+import { LbdModule } from './modules/lbd/lbd.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AuthService } from './modules/authentication/services/auth.service';
     SidebarModule,
     FooterModule,
     NavbarModule,
-    HttpModule
+    HttpModule,
+    LbdModule
   ],
   providers: [MenuService , AuthService],
   bootstrap: [AppComponent]
