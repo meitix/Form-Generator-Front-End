@@ -28,12 +28,14 @@ import { FormUserItemComponent } from './components/form-users/form-user-item/fo
 import { DatePipe } from '../../pipes/date.pipe';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { FormChartsComponent } from './components/form-charts/form-charts.component';
+import { LbdModule } from '../lbd/lbd.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsRoutingModule,
     FormsModule,
+    LbdModule,
     ReactiveFormsModule
   ],
 

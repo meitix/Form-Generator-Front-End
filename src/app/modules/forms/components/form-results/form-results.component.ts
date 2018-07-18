@@ -6,7 +6,6 @@ import { TadForm } from '../models/tad-form';
 import { ResultService } from '../../services/result.service';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { DatePipe } from '../../../../pipes/date.pipe';
-import 'text-encoding';
 
 @Component({
   selector: 'app-form-results',
@@ -92,8 +91,8 @@ export class FormResultsComponent implements OnInit, OnDestroy {
       });
       CsvString += '\r\n';
     });
-    const uint8array = new TextEncoder().encode(CsvString);
-    CsvString = 'data:application/csv,' + uint8array;
+
+    CsvString = 'data:application/csv,' + encodeURIComponent(CsvString);
     const x = document.createElement('A');
     x.setAttribute('href', CsvString);
     x.setAttribute('download', this.form.title.concat('.csv'));

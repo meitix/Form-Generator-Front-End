@@ -9,6 +9,7 @@ import { FormCreateComponent } from '../components/form-create/form-create.compo
 import { FormStartComponent } from '../components/form-start/form-start.component';
 import { FormViewComponent } from '../components/form-view/form-view.component';
 import { FormUsersComponent } from '../components/form-users/form-users.component';
+import { FormChartsComponent } from '../components/form-charts/form-charts.component';
 
 const formRoutes: Routes = [
   {path: '', component: FormStartComponent,
@@ -20,6 +21,7 @@ const formRoutes: Routes = [
         {path: ':id/view' , component: FormViewComponent},
         {path: ':id/users' , component: FormUsersComponent},
         {path: ':id/results' , component: FormResultsComponent},
+        {path: ':id/charts' , component: FormChartsComponent},
         {path: ':id/results/edit' , component: FormViewComponent}
       ]},
 

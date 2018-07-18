@@ -1,3 +1,12 @@
-<p>
-  form-charts works!
-</p>
+<div class="col-md-3">
+  <lbd-chart
+  [title]="form.title"
+  [chartClass]="'ct-perfect-fourth'"
+  [chartType]="emailChartType"
+  [chartData]="emailChartData"
+  [legendItems]="emailChartLegendItems"
+  [withHr]="true"
+  [footerIconClass]="'fa fa-clock-o'"
+  [footerText]="'Campaign sent 2 days ago'">
+</lbd-chart>
+</div>
