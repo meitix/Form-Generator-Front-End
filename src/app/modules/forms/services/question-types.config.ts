@@ -7,9 +7,9 @@ import { QuestionType } from '../components/models/question-type';
       {displayName: 'عدد' , title: 'number'  , inputType: 'number'},
       {displayName: 'شماره تلفن' , title: 'tel'  , inputType: 'tel'},
       {displayName: 'ایمیل' , title: 'email'  , inputType: 'email'},
-      {displayName: 'مکان' , title: 'location'  , inputType: 'map'},
-      {displayName: 'فایل' , title: 'file' , inputType: 'file'},
-      {displayName: 'تاریخ' , title: 'date'  , inputType: 'date'}
+     // {displayName: 'مکان' , title: 'location'  , inputType: 'map'},
+    //  {displayName: 'فایل' , title: 'file' , inputType: 'file'},
+     // {displayName: 'تاریخ' , title: 'date'  , inputType: 'date'}
     ];
 
 
