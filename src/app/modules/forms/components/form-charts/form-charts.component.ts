@@ -4,8 +4,9 @@ import { FormService } from '../../services/form.service';
 import { ActivatedRoute } from '../../../../../../node_modules/@angular/router';
 import { Subscription } from '../../../../../../node_modules/rxjs';
 import { Chart } from './model/chart';
-import 'linq';
 import { Question } from '../models/question';
+import Enumerable = require('../../../../../../node_modules/linq');
+import { ChartType } from '../../../lbd/lbd-chart/lbd-chart.component';
 
 @Component({
   selector: 'app-form-charts',
@@ -36,36 +37,50 @@ export class FormChartsComponent implements OnInit {
     });
   }
 
-    getChartableResults() {
-      const validQuestions = this.form.questions.filter(q => {
-        return q.type.title === 'options';
+  getChartableResults() {
+    const validQuestions = this.form.questions.filter(q => {
+      return q.type.title === 'options';
+    });
+
+    const resultsForDisplay = [];
+
+    this.results.forEach(item => {
+      validQuestions.forEach(element => {
+        resultsForDisplay.push(item[element.text]);
       });
+    });
+    console.log(resultsForDisplay);
+    this.makeChartData(validQuestions, resultsForDisplay);
+  }
 
-      const resultsForDisplay = [];
+  makeChartData(questions: Question[], results: any[]) {
+    this.charts = [];
+    questions.forEach(q => {
+      // make labels.
+      const labels = [];
+      const series = [];
+      q.options.forEach(opt => {
+        labels.push(opt.text);
 
-      this.results.forEach(item => {
-        validQuestions.forEach(element => {
-          resultsForDisplay.push(item[element.text]);
-        });
+        // make chart series.
+        const count = Enumerable.from(results).count(res => res[opt.text]);
+        series.push(count);
       });
-      console.log(resultsForDisplay);
-      this.makeChartData(validQuestions, resultsForDisplay);
-    }
+      this.charts.push({ type: ChartType.Pie, data: { series , labels } , legendItems: null });
 
-    makeChartData(questions: Question[] , results: any[]) {
-// todo: make it complete.
-    }
+    });
+  }
 
-    // this.emailChartType = ChartType.Line;
-    // this.emailChartData = {
-    //   labels: ['62%', 'x2', 'x3'], // گزینه ها باید بیان اینجا
-    //   series: [
-    //     [62, 32, 6] // جمع تعداد انتخاب هر گزینه بیاد اینجا
-    //   ]
-    // };
-    // this.emailChartLegendItems = [
-    //   { title: 'Open', imageClass: 'fa fa-circle text-info' },
-    //   { title: 'Bounce', imageClass: 'fa fa-circle text-danger' },
-    //   { title: 'Unsubscribe', imageClass: 'fa fa-circle text-warning' }
-    // ];
+  // this.emailChartType = ChartType.Line;
+  // this.emailChartData = {
+  //   labels: ['62%', 'x2', 'x3'], // گزینه ها باید بیان اینجا
+  //   series: [
+  //     [62, 32, 6] // جمع تعداد انتخاب هر گزینه بیاد اینجا
+  //   ]
+  // };
+  // this.emailChartLegendItems = [
+  //   { title: 'Open', imageClass: 'fa fa-circle text-info' },
+  //   { title: 'Bounce', imageClass: 'fa fa-circle text-danger' },
+  //   { title: 'Unsubscribe', imageClass: 'fa fa-circle text-warning' }
+  // ];
 }
