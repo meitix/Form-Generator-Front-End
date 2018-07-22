@@ -66,7 +66,7 @@ export class FormChartsComponent implements OnInit {
         const count = Enumerable.from(results).Where(res => res === opt.text).Count();
         series.push(count);
       });
-      this.charts.push({ title: q.text , type: ChartType.Pie, data: { series , labels } , legendItems: null });
+      this.charts.push({ title: q.text, type: ChartType.Pie, data: { series, labels }, legendItems: null });
 
     });
   }

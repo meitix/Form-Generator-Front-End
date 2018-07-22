@@ -13,6 +13,7 @@ export enum ChartType {
 }
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'lbd-chart',
   templateUrl: './lbd-chart.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush

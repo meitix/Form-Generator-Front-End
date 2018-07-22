@@ -18,8 +18,8 @@ export class FormResultsComponent implements OnInit, OnDestroy {
   results: any[];
   resultKeies: string[];
   shownKies: string[];
+  searchQuery: string;
 
-  Results = [];
   constructor(
     private route: ActivatedRoute,
     private formService: FormService,
@@ -70,8 +70,8 @@ export class FormResultsComponent implements OnInit, OnDestroy {
 
 
   getCSV() {
-    this.Results = [];
-    this.Results.push(this.shownKies);
+    const Results = [];
+    Results.push(this.shownKies);
     this.results.forEach(element => {
       const row = [];
       this.shownKies.forEach(el => {
@@ -81,11 +81,11 @@ export class FormResultsComponent implements OnInit, OnDestroy {
           row.push(element[el]);
         }
       });
-      this.Results.push(row);
+      Results.push(row);
     });
 
     let CsvString = '';
-    this.Results.forEach(function (RowItem, RowIndex) {
+    Results.forEach(function (RowItem, RowIndex) {
       RowItem.forEach(function (ColItem, ColIndex) {
         CsvString += ColItem + ',';
       });
