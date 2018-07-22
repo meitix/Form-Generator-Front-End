@@ -1,13 +1,13 @@
 <div class="col-md-3">
 
-  <lbd-chart
-  [title]="form.title"
+  <lbd-chart *ngFor="let chart of charts"
+  [title]="chart.title"
   [chartClass]="'ct-perfect-fourth'"
-  [chartType]="emailChartType"
-  [chartData]="emailChartData"
-  [legendItems]="emailChartLegendItems"
+  [chartType]="chart.type"
+  [chartData]="chart.data"
+  [legendItems]="chart.legendItems"
   [withHr]="true"
   [footerIconClass]="'fa fa-clock-o'"
-  [footerText]="'Campaign sent 2 days ago'">
+  [footerText]="">
 </lbd-chart>
 </div>

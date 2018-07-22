@@ -5,8 +5,8 @@ import { ActivatedRoute } from '../../../../../../node_modules/@angular/router';
 import { Subscription } from '../../../../../../node_modules/rxjs';
 import { Chart } from './model/chart';
 import { Question } from '../models/question';
-import Enumerable = require('../../../../../../node_modules/linq');
 import { ChartType } from '../../../lbd/lbd-chart/lbd-chart.component';
+import * as Enumerable from 'linq-es2015';
 
 @Component({
   selector: 'app-form-charts',
@@ -63,10 +63,10 @@ export class FormChartsComponent implements OnInit {
         labels.push(opt.text);
 
         // make chart series.
-        const count = Enumerable.from(results).count(res => res[opt.text]);
+        const count = Enumerable.from(results).Where(res => res === opt.text).Count();
         series.push(count);
       });
-      this.charts.push({ type: ChartType.Pie, data: { series , labels } , legendItems: null });
+      this.charts.push({ title: q.text , type: ChartType.Pie, data: { series , labels } , legendItems: null });
 
     });
   }
