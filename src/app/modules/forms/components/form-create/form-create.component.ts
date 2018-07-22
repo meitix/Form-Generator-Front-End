@@ -51,14 +51,24 @@ export class FormCreateComponent implements OnInit {
   }
 
   selectQuestionType(type: QuestionType) {
-    const question = this.createQuestion(type);
-    this.formService.addQuestionToCurrentForm(question);
+    if (type.title !== 'extended-form') {
+      const question = this.createQuestion(type);
+      this.formService.addQuestionToCurrentForm(question);
+    } else {
+      this.showModalforSelectSavedForm();
+    }
   }
+
+  private showModalforSelectSavedForm() {
+    // todo: make modal to select form.
+  }
+
 
   // create question depend on QuestionType that passed.
   private createQuestion(type: QuestionType): Question {
-    return { text: '' , value: null , type: type, options: [], order: 0, isRequired: false };
+    return { text: '', value: null, type: type, options: [], order: 0, isRequired: false };
   }
+
 
   cancel() {
     this.formService.resetCurrentForm();
