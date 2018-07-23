@@ -33,6 +33,7 @@ export class FormService {
   createEmptyForm(): TadForm {
     return { _id: null, isEnable: true, questions: [], title: '' , results: [] };
   }
+
   getCurrentForm(): TadForm {
     if (!this.currentForm) {
       this.resetCurrentForm();
@@ -49,9 +50,7 @@ export class FormService {
   }
 
   removeQuestion(question: Question) {
-    this.currentForm.questions = this.currentForm.questions.filter(function(
-      item
-    ) {
+    this.currentForm.questions = this.currentForm.questions.filter(item => {
       return item.text !== question.text;
     });
   }
@@ -80,10 +79,7 @@ export class FormService {
 
   sortQuestions() {
     // sort questions by order
-    this.currentForm.questions = this.currentForm.questions.sort(function(
-      a,
-      b
-    ) {
+    this.currentForm.questions = this.currentForm.questions.sort((a, b) => {
       return a.order >= b.order ? 1 : -1;
     });
   }
