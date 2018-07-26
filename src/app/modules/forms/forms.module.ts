@@ -29,6 +29,7 @@ import { DatePipe } from '../../pipes/date.pipe';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { FormChartsComponent } from './components/form-charts/form-charts.component';
 import { LbdModule } from '../lbd/lbd.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { LbdModule } from '../lbd/lbd.module';
     FormsRoutingModule,
     FormsModule,
     LbdModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule.forRoot()
   ],
 
   declarations: [

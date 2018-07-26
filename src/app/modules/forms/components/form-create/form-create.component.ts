@@ -3,16 +3,11 @@ import { QuestionType } from '../models/question-type';
 import { Question } from '../models/question';
 import { TadForm } from '../models/tad-form';
 import {
-  FormControl,
-  FormGroup,
-  Validators,
-  FormArray,
   NgForm
 } from '@angular/forms';
-import { QuestionTypesConfig } from '../../services/question-types.config';
 import { FormService } from '../../services/form.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from '../../../authentication/services/auth.service';
+import { NgbModal, ModalDismissReasons } from '../../../../../../node_modules/@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-form-create',
@@ -26,10 +21,14 @@ export class FormCreateComponent implements OnInit {
   currentForm: TadForm;
   @Input() isOnEditMode: boolean;
 
+  closeResult: string;
+
+
   constructor(
     private formService: FormService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private modalService: NgbModal
   ) {
     this.addedQuestionTypes = [];
   }
@@ -62,7 +61,23 @@ export class FormCreateComponent implements OnInit {
   private showModalforSelectSavedForm() {
     // todo: make modal to select form.
   }
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
 
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
 
   // create question depend on QuestionType that passed.
   private createQuestion(type: QuestionType): Question {
