@@ -56,32 +56,8 @@
     </div>
   </div>
 
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+    Launch modal
+  </button>
 </form>
-
-<ng-template #content let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-    <button type="button" class="close" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-
-<hr>
-
-<pre>{{closeResult}}</pre>
-
-<div class="modal-body">
-  <form>
-    <div class="form-group">
-      <label for="dateOfBirth">Date of birth</label>
-      <div class="input-group">
-        <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
-            <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
-          </button>
-        </div>
-      </div>
-    </div>
-  </form>
-</div>
+<app-modal></app-modal>

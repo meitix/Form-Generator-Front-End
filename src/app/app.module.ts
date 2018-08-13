@@ -10,6 +10,7 @@ import { NavbarModule } from './shared/navbar/navbar.module';
 import { HttpModule } from '@angular/http';
 import { MenuService } from './sidebar/menu.service';
 import { AuthService } from './modules/authentication/services/auth.service';
+import { BootstrapComponentsModule } from './shared/bootstrap-components/bootstrap-components.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AuthService } from './modules/authentication/services/auth.service';
     SidebarModule,
     FooterModule,
     NavbarModule,
-    HttpModule
+    HttpModule,
+    BootstrapComponentsModule
   ],
   providers: [MenuService , AuthService],
   bootstrap: [AppComponent]
