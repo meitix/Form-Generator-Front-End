@@ -1,9 +1,19 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ModalService {
 
-  constructor() { }
+  isOpen: boolean;
+
+  constructor() {
+    this.isOpen = false;
+  }
+
+  open() {
+    this.isOpen = true;
+  }
+
+  close() {
+    this.isOpen = false;
+  }
 }

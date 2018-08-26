@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { FormService } from '../../services/form.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgbModal, ModalDismissReasons } from '../../../../../../node_modules/@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-form-create',
@@ -27,8 +26,7 @@ export class FormCreateComponent implements OnInit {
   constructor(
     private formService: FormService,
     private router: Router,
-    private route: ActivatedRoute,
-    private modalService: NgbModal
+    private route: ActivatedRoute
   ) {
     this.addedQuestionTypes = [];
   }
