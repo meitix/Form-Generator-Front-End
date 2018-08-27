@@ -7,6 +7,8 @@ import {
 } from '@angular/forms';
 import { FormService } from '../../services/form.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-form-create',
@@ -21,7 +23,6 @@ export class FormCreateComponent implements OnInit {
   @Input() isOnEditMode: boolean;
 
   closeResult: string;
-
 
   constructor(
     private formService: FormService,
@@ -57,9 +58,8 @@ export class FormCreateComponent implements OnInit {
   }
 
   private showModalforSelectSavedForm() {
-    // todo: make modal to select form.
+    $('#modalId').modal('open');
   }
-
 
 
   // create question depend on QuestionType that passed.
