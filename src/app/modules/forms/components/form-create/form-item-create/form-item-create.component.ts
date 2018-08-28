@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Question } from '../../models/question';
 import { FormService } from '../../../services/form.service';
 import { QuestionType } from '../../models/question-type';
-import { SweetAlertService} from 'ng2-sweetalert2';
+import { SweetAlertService } from 'ng2-sweetalert2';
 
 
 @Component({
@@ -19,9 +19,9 @@ export class FormItemCreateComponent implements OnInit {
 
 
 
-  constructor(private formService: FormService , private swal: SweetAlertService) {
+  constructor(private formService: FormService, private swal: SweetAlertService) {
 
-   }
+  }
 
   ngOnInit() {
     this.questionTypes = this.formService.getAvalibleQuestionTypes();

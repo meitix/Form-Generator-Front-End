@@ -1,33 +1,32 @@
 <div class="row" draggable>
-<div class="col-md-9">
+  <div class="col-md-9">
 
-<div class="form-group label-floating">
-		<label class="control-label">{{itemIndex + 1}} -</label>
-	<input name="{{'q'+itemIndex }}" type="text" [(ngModel)]="item.text" class="form-control">
-	</div>
-</div>
-<div class="col-md-3">
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" [(ngModel)]="item.isRequired" name="isRequired{{itemIndex}}">
-      اجباری
-    </label>
+    <div class="form-group label-floating">
+      <label class="control-label">{{itemIndex + 1}} -</label>
+      <input name="{{'q'+itemIndex }}" type="text" [(ngModel)]="item.text" class="form-control">
+    </div>
   </div>
+  <div class="col-md-3">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" [(ngModel)]="item.isRequired" name="isRequired{{itemIndex}}"> اجباری
+      </label>
+    </div>
     <span class="dropdown">
-    <button class="btn btn-info btn-xs btn-simple toggle-dropdown" data-toggle="dropdown" type="button" title="ویرایش">
-      {{item.type.displayName}} |
-    <i class="caret"></i>
-    </button>
-    <ul class="dropdown-menu">
+      <button class="btn btn-info btn-xs btn-simple toggle-dropdown" data-toggle="dropdown" type="button" title="ویرایش">
+        {{item.type.displayName}} |
+        <i class="caret"></i>
+      </button>
+      <ul class="dropdown-menu">
         <li *ngFor="let type of questionTypes;let i=index">
           <a (click)="editQuestionType(type)">{{i+1}} - {{type.displayName}}</a>
         </li>
       </ul>
-  </span>
+    </span>
 
-  <button type="button" class="btn btn-danger btn-simple btn-xs" (click)="deleteQuestion()">حذف</button>
+    <button type="button" class="btn btn-danger btn-simple btn-xs" (click)="deleteQuestion()">حذف</button>
 
-</div>
+  </div>
 </div>
 
 <app-item-answer-create [question]="item"></app-item-answer-create>

@@ -5,6 +5,7 @@
     *ngIf="(question.type.inputType === 'options')"
       [question]="question"
      ></app-multi-options-create>
+     <app-extended-form *ngIf="question.type.inputType === 'extended-form'" [question]="question"></app-extended-form>
   </div>
 
 </div>

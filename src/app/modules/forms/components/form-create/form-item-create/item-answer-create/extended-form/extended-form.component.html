@@ -1,0 +1,39 @@
+<div class="col-md-3">
+  <span class="dropdown">
+    <button type="button" data-toggle="dropdown" class="btn btn-simple btn-round btn-success btn-outline toggle-dropdown">
+
+      {{selectedForm ? selectedForm.title : 'برای انتخاب فرم خارجی اینجا کلیک کنید'}}
+    
+      &nbsp;&nbsp;<i class="caret"></i></button>
+
+    <ul class="dropdown-menu">
+      <li *ngFor="let form of userForms;let i=index">
+        <a (click)="selectExtendedForm(form)">{{i+1}} - {{form.title}}</a>
+      </li>
+    </ul>
+  </span>
+</div>
+<div class="col-md-9" *ngIf="selectedForm">
+  <div class="col-md-4">
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" [(ngModel)]="question.extendedForm.allowAddNewResult">امکان ثبت مورد جدید
+    </label>
+  </div>
+</div> 
+ <div class="col-md-3">
+  <span class="dropdown">
+    <button type="button" class="btn btn-round btn-outline btn-simple btn-info toggle-dropdown" data-toggle="dropdown">
+    
+     {{question.extendedForm ? DisplayTypeTitles[question.extendedForm.type] : 'نوع نمایش'}}
+     &nbsp;&nbsp;  <i class="caret"></i>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a (click)="setExtendedFormType(0)">لیست کشویی</a></li>
+      <li><a (click)="setExtendedFormType(10)">تکمیل خودکار</a></li>
+      <li><a (click)="setExtendedFormType(20)">چند انتخابی</a></li>
+      <li><a (click)="setExtendedFormType(30)">تک انتخابی</a></li>
+    </ul>
+  </span>
+</div>
+</div>

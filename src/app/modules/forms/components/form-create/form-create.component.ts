@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { FormService } from '../../services/form.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import * as $ from 'jquery';
 
 
 @Component({
@@ -22,8 +21,7 @@ export class FormCreateComponent implements OnInit {
   currentForm: TadForm;
   @Input() isOnEditMode: boolean;
 
-  closeResult: string;
-
+  userForms: TadForm[];
   constructor(
     private formService: FormService,
     private router: Router,
@@ -49,16 +47,11 @@ export class FormCreateComponent implements OnInit {
   }
 
   selectQuestionType(type: QuestionType) {
-    if (type.title !== 'extended-form') {
       const question = this.createQuestion(type);
       this.formService.addQuestionToCurrentForm(question);
-    } else {
-      this.showModalforSelectSavedForm();
-    }
   }
 
   private showModalforSelectSavedForm() {
-    $('#modalId').modal('open');
   }
 
 

@@ -30,6 +30,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 import { FormChartsComponent } from './components/form-charts/form-charts.component';
 import { LbdModule } from '../lbd/lbd.module';
 import { BootstrapComponentsModule } from '../../shared/bootstrap-components/bootstrap-components.module';
+import { ExtendedFormComponent } from './components/form-create/form-item-create/item-answer-create/extended-form/extended-form.component';
 
 @NgModule({
   imports: [
@@ -58,7 +59,8 @@ import { BootstrapComponentsModule } from '../../shared/bootstrap-components/boo
     FormUserItemComponent,
     DatePipe,
     TranslatePipe,
-    FormChartsComponent
+    FormChartsComponent,
+    ExtendedFormComponent
   ],
   providers: [
     FormService,

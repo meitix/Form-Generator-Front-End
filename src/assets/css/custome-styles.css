@@ -33,3 +33,25 @@ textarea.form-control{
     text-overflow: ellipsis;
     max-width: 100%;
 }
+a {
+    cursor: pointer;
+}
+
+.btn-outline {
+    border: 1px solid ;
+}
+.btn-success.btn-outline {
+    border-color: #4caf50;
+}
+.btn-danger.btn-outline {
+    border-color: #f44336;
+}
+.btn-primary.btn-outline {
+    border-color: #9c27b0;
+}
+.btn-info.btn-outline {
+    border-color: #00bcd4;
+}
+.btn-default.btn-outline {
+    border-color: #999999;
+}
