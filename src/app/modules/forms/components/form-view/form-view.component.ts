@@ -1,11 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TadForm } from '../models/tad-form';
-import { NgForm, FormControl, Validators, FormGroup } from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { FormService } from '../../services/form.service';
 import { ActivatedRoute } from '@angular/router';
-import { makeDecorator } from '@angular/core/src/util/decorators';
 import { FormResult } from '../models/form-result';
-import { Alert } from 'selenium-webdriver';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Subscription } from 'rxjs/Subscription';
 import { ResultService } from '../../services/result.service';

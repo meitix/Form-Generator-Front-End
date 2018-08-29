@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormService } from '../../../../../services/form.service';
 import { TadForm } from '../../../../models/tad-form';
-import { Question, ExtendedFormDisplayType , DisplayTypeTitles} from '../../../../models/question';
+import { Question, ExtendedFormDisplayType, DisplayTypeTitles } from '../../../../models/question';
 
 @Component({
   selector: 'app-extended-form',
@@ -19,6 +19,11 @@ export class ExtendedFormComponent implements OnInit {
   ngOnInit() {
     this.formService.getAllformsFromServer().subscribe(forms => {
       this.userForms = forms;
+      // load selected form if extists.
+      // its will use in edit form.
+      if (this.question.extendedForm) {
+        this.selectedForm = forms.find(form => form._id === this.question.extendedForm._id);
+      }
     });
   }
 
