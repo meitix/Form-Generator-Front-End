@@ -6,6 +6,7 @@ import { TadForm } from '../models/tad-form';
 import { ResultService } from '../../services/result.service';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { DatePipe } from '../../../../pipes/date.pipe';
+import { GetKies } from '../../../../helpers/object-helper';
 
 @Component({
   selector: 'app-form-results',
@@ -36,24 +37,7 @@ export class FormResultsComponent implements OnInit, OnDestroy {
 
         this.formService.getFormResults(id).subscribe(res => {
           this.results = res;
-
-          let resKies = [];
-          (function () {
-            const hasOwn = Object.prototype.hasOwnProperty;
-            Object.keys = Object_keys;
-            function Object_keys(obj) {
-              const keys = [];
-              let name;
-              for (name in obj) {
-                if (hasOwn.call(obj, name)) {
-                  keys.push(name);
-                }
-              }
-              return keys;
-            }
-            resKies = Object.keys(res[0]);
-          })();
-          this.resultKeies = resKies;
+          this.resultKeies = GetKies(res[0]);
           this.shownKies = this.resultKeies;
         });
       });

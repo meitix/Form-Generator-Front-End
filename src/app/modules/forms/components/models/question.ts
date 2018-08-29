@@ -11,16 +11,17 @@ export interface Question {
   extendedForm?: {
     _id: string,
     allowAddNewResult: boolean,
-    type: ExtendedFormDisplayType
+    type: number,
+    fieldsToView?: string[]
   };
 }
 
-export enum ExtendedFormDisplayType {
-  dropbox = 0 ,
-  autoComplete = 10,
-  checkbox = 20 ,
-  radio = 30
-}
+export const ExtendedFormDisplayType = {
+  dropdown: 0 ,
+  autoComplete: 10,
+  checkbox: 20 ,
+  radio: 30
+};
 
 export const DisplayTypeTitles = {
   '0': 'لیست کشویی',

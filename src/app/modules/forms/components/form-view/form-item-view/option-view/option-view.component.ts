@@ -8,17 +8,17 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./option-view.component.css']
 })
 export class OptionViewComponent implements OnInit {
-@Input() options: QuestionOption[];
-@Input() controleName: string;
-@Input() form: FormGroup;
-@Input() selectedValue: string;
+  @Input() options: QuestionOption[];
+  @Input() controleName: string;
+  @Input() form: FormGroup;
+  @Input() selectedValue: string;
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-selectOption(a: HTMLAnchorElement) {
-   a.click();
-}
+  selectOption(a: HTMLAnchorElement) {
+    a.click();
+  }
 
 }

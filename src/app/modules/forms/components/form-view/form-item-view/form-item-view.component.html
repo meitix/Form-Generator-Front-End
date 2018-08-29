@@ -9,6 +9,11 @@
     [form]="form"
     [selectedValue]="question.value || ''"
      ></app-option-view>
+     
+     <app-extended-form-view
+     *ngIf="question.type.inputType === 'extended-form'"
+     
+     ></app-extended-form-view>
 
     <textarea class="form-control"
     *ngIf="question.type.inputType === 'textarea'"

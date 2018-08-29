@@ -31,6 +31,10 @@ import { FormChartsComponent } from './components/form-charts/form-charts.compon
 import { LbdModule } from '../lbd/lbd.module';
 import { BootstrapComponentsModule } from '../../shared/bootstrap-components/bootstrap-components.module';
 import { ExtendedFormComponent } from './components/form-create/form-item-create/item-answer-create/extended-form/extended-form.component';
+import { ExtendedFromViewComponent } from './components/form-view/form-item-view/extended-from-view/extended-from-view.component';
+import { CreateNewComponent } from './components/form-view/form-item-view/extended-from-view/create-new/create-new.component';
+import { StringViewPipe } from '../../pipes/string-view.pipe';
+import { Select2Module } from 'ng4-select2';
 
 @NgModule({
   imports: [
@@ -38,6 +42,7 @@ import { ExtendedFormComponent } from './components/form-create/form-item-create
     FormsRoutingModule,
     FormsModule,
     LbdModule,
+    Select2Module,
     ReactiveFormsModule,
     BootstrapComponentsModule
   ],
@@ -59,8 +64,11 @@ import { ExtendedFormComponent } from './components/form-create/form-item-create
     FormUserItemComponent,
     DatePipe,
     TranslatePipe,
+    StringViewPipe,
     FormChartsComponent,
-    ExtendedFormComponent
+    ExtendedFormComponent,
+    ExtendedFromViewComponent,
+    CreateNewComponent
   ],
   providers: [
     FormService,

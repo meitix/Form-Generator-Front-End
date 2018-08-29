@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormService } from '../../../../../services/form.service';
 import { TadForm } from '../../../../models/tad-form';
 import { Question, ExtendedFormDisplayType, DisplayTypeTitles } from '../../../../models/question';
+import * as Enumerable from 'linq';
+
 
 @Component({
   selector: 'app-extended-form',
@@ -14,6 +16,9 @@ export class ExtendedFormComponent implements OnInit {
   @Input() question: Question;
   selectedForm: TadForm;
   DisplayTypeTitles = DisplayTypeTitles;
+  fieldsOfForm: string[];
+  selectedFields: string[];
+
   constructor(private formService: FormService) { }
 
   ngOnInit() {
@@ -32,12 +37,18 @@ export class ExtendedFormComponent implements OnInit {
     this.question.extendedForm = {
       _id: form._id,
       allowAddNewResult: false,
-      type: ExtendedFormDisplayType.dropbox
+      type: ExtendedFormDisplayType.dropdown,
+      fieldsToView: []
     };
+    this.selectedFields = this.question.extendedForm.fieldsToView;
+    this.fieldsOfForm = Enumerable.from(this.selectedForm.questions).select(f => f.text).toArray();
   }
 
-  setExtendedFormType(type: ExtendedFormDisplayType) {
+  setExtendedFormType(type: number) {
     this.question.extendedForm.type = type;
   }
 
+  toggleSelectFieldToView(data: {value: string[]}) {
+    this.question.extendedForm.fieldsToView = data.value;
+  }
 }

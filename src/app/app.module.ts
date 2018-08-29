@@ -11,6 +11,7 @@ import { HttpModule } from '@angular/http';
 import { MenuService } from './sidebar/menu.service';
 import { AuthService } from './modules/authentication/services/auth.service';
 import { BootstrapComponentsModule } from './shared/bootstrap-components/bootstrap-components.module';
+import { StringViewPipe } from './pipes/string-view.pipe';
 
 @NgModule({
   declarations: [
