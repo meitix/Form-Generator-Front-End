@@ -3,27 +3,32 @@
     <label class="control-label"><strong>{{index+1}} - {{question.text}}</strong></label>
 
     <app-option-view
-    *ngIf="question.type.inputType === 'options'"
-    [options]="question.options"
-    [controleName]="question.text"
-    [form]="form"
-    [selectedValue]="question.value || ''"
+      *ngIf="question.type.inputType === 'options'"
+      [options]="question.options"
+      [controleName]="question.text"
+      [form]="form"
+      [selectedValue]="question.value || ''"
      ></app-option-view>
      
      <app-extended-form-view
-     *ngIf="question.type.inputType === 'extended-form'"
-     
+      *ngIf="question.type.inputType === 'extended-form'"
+      [question]="question"
+      [controleName]="question.text"
+      [form]="form"
+      [selectedValue]="question.value || ''"
      ></app-extended-form-view>
 
     <textarea class="form-control"
-    *ngIf="question.type.inputType === 'textarea'"
-    [required]="question.isRequired"
-    [formControlName]="question.text"></textarea>
+      *ngIf="question.type.inputType === 'textarea'"
+      [required]="question.isRequired"
+      [formControlName]="question.text"
+    ></textarea>
 
     <input class="form-control"
-    [formControlName]="question.text"
-    type="{{question.type.inputType}}"
-    [required]="question.isRequired"
-    *ngIf="question.type.inputType !== 'options' && question.type.inputType !== 'textarea'">
+      [formControlName]="question.text"
+      type="{{question.type.inputType}}"
+      [required]="question.isRequired"
+      *ngIf="question.type.inputType !== 'options' && question.type.inputType !== 'textarea' && question.type.inputType !== 'extended-form'" 
+    />
 
   </div>

@@ -1,6 +1,14 @@
-<app-option-view
-*ngIf="question.extendetForm.type === type.radio"
+<!-- <app-option-view
+*ngIf="question.extendedForm.type === type.single"
 [options]="result"
+    [controleName]="question.text"
+    [form]="form"
+    [selectedValue]="question.value || ''"
 >
 
-</app-option-view>
+</app-option-view> -->
+
+<select2
+    [options]="select2Options"
+    [data]="result"
+></select2>

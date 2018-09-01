@@ -12,20 +12,19 @@ export interface Question {
     _id: string,
     allowAddNewResult: boolean,
     type: number,
-    fieldsToView?: string[]
+    fieldsToView?: string[],
+    primaryKey?: any
   };
 }
 
 export const ExtendedFormDisplayType = {
-  dropdown: 0 ,
-  autoComplete: 10,
-  checkbox: 20 ,
-  radio: 30
+  table: 10,
+  multiple: 20 ,
+  single: 30
 };
 
 export const DisplayTypeTitles = {
-  '0': 'لیست کشویی',
-  10: 'تکمیل خودکار',
-  20: 'چند انتخابی',
-  30: 'تک انتخابی'
+  10: 'جدول',
+  30: 'تک انتخابی',
+  20: 'چند انتخابی'
 };

@@ -3,6 +3,7 @@ import { FormService } from '../../../../../services/form.service';
 import { TadForm } from '../../../../models/tad-form';
 import { Question, ExtendedFormDisplayType, DisplayTypeTitles } from '../../../../models/question';
 import * as Enumerable from 'linq';
+import { QuestionOption } from '../../../../models/question-option';
 
 
 @Component({
@@ -28,6 +29,7 @@ export class ExtendedFormComponent implements OnInit {
       // its will use in edit form.
       if (this.question.extendedForm) {
         this.selectedForm = forms.find(form => form._id === this.question.extendedForm._id);
+        this.setFieldsOfForm();
       }
     });
   }
@@ -37,18 +39,31 @@ export class ExtendedFormComponent implements OnInit {
     this.question.extendedForm = {
       _id: form._id,
       allowAddNewResult: false,
-      type: ExtendedFormDisplayType.dropdown,
+      type: ExtendedFormDisplayType.single,
       fieldsToView: []
     };
     this.selectedFields = this.question.extendedForm.fieldsToView;
-    this.fieldsOfForm = Enumerable.from(this.selectedForm.questions).select(f => f.text).toArray();
+    this.setFieldsOfForm();
   }
 
   setExtendedFormType(type: number) {
     this.question.extendedForm.type = type;
   }
 
-  toggleSelectFieldToView(data: {value: string[]}) {
+  toggleSelectFieldToView(data: { value: string[] }) {
     this.question.extendedForm.fieldsToView = data.value;
+
+  }
+
+  getFieldsOfForm(form: TadForm) {
+    return Enumerable.from(form.questions).select(f => f.text).toArray();
+  }
+
+  setFieldsOfForm() {
+    this.fieldsOfForm = this.getFieldsOfForm(this.selectedForm);
+  }
+
+  selectPrimaryKey(data: { value: string }) {
+    this.question.extendedForm.primaryKey = data.value;
   }
 }
